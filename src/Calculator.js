@@ -1,4 +1,6 @@
+
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Calculator() {
     const [firstNum, setFirstNum] = useState('');
@@ -38,7 +40,8 @@ export default function Calculator() {
             if((+firstNum) >= (+secondNum)) {
                 setResult(firstNum - secondNum);
             } else {
-                setResult("First Number must be greater than second number");
+                toast.success("Number 1 must be larger than Number 2");
+                setResult("First Number must be greater than second number");  
             }
         }
     }
@@ -73,13 +76,14 @@ export default function Calculator() {
                 {
                     setResult(firstNum/secondNum);
                 } else {
-                    setResult("Divider cannot be Zero");
+                    toast.success("Divider cannot be 0");
+                    setResult("Divider cannot be 0");
                 }
             }
         
     }
   return (
-    <div className='col-4 mx-auto card  p-5 shadow-sm'>
+    <div className='col-4 mx-auto card p-5 shadow-sm'>
         <h3 className='text-center'>My Virtual Calculator</h3>
         <div className="">
             <div className="mb-3">
@@ -87,8 +91,7 @@ export default function Calculator() {
               <input type="text" 
               placeholder='Enter first number'
                      className="form-control" 
-                     id="exampleInputEmail1" 
-                     aria-describedby="emailHelp"
+                     id="numberone" 
                      value={firstNum}
                      onChange={(e)=> {
                         setFirstNum(e.target.value)
@@ -102,7 +105,7 @@ export default function Calculator() {
               <input type="text" 
               placeholder='Enter second number'
                      className="form-control" 
-                     id="exampleInputPassword1"
+                     id="numbertwo"
                      value={secondNum}
                      onChange={(e)=> {
                         setSecondNum(e.target.value);
@@ -111,24 +114,24 @@ export default function Calculator() {
                      />
                 <small className="text-danger">{error.second ?"Second Number is required" : ""}</small>
             </div>
-            <div className="d-flex justify-content-center m-2">
+            <div className="d-flex justify-content-between">
             <button type="button" 
                     className="btn btn-outline-dark px-3"
                     onClick={addHandler}
 
-                    >Add</button>
+                    > + </button>
             <button type="button" 
                     className="btn btn-outline-dark px-3"
                     onClick={substractHandler}
-                    >Substract</button>
+                    > - </button>
             <button type="button" 
                     className="btn btn-outline-dark px-3"
                     onClick={multipleHandler}
-                    >Multiply</button>
+                    > x </button>
             <button type="button" 
                     className="btn btn-outline-dark px-3"
                     onClick={divideHandler}
-                    >Divide</button>
+                    > / </button>
             </div>
         </div>
         <h5 className='mt-4 text-center'>

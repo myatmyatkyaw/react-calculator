@@ -4,6 +4,8 @@ import './index.css';
 //import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css"
 import Calculator from './Calculator';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +15,7 @@ root.render(
   <div className="container">
     <div className="row vh-100 align-items-center">
       <Calculator/>
+      <ToastContainer />
     </div>
   </div>
 </React.StrictMode>
